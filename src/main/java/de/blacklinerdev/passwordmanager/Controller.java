@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -25,6 +26,7 @@ public class Controller implements ActionListener, Observer {
                 System.exit(0);
         }
         this.view = new View();
+        
         this.model.addObserver(this);
     }
 
@@ -34,7 +36,7 @@ public class Controller implements ActionListener, Observer {
         return (Model) ois.readObject();
     }
 
-    private boolean save(Model model){
+    private boolean save(Model model){                                                                  //todo
         try {
             FileOutputStream fos = new FileOutputStream("./model.file");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -45,10 +47,9 @@ public class Controller implements ActionListener, Observer {
         }
         return true;
     }
-  // test
     @Override
     public void actionPerformed(ActionEvent ae) {
-
+        
     }
 
      public static void main(String[] args){
@@ -58,6 +59,6 @@ public class Controller implements ActionListener, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        this.view.setList((List<Account>)arg);
     }
 }

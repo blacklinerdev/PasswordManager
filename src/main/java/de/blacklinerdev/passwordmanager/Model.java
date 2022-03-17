@@ -24,21 +24,21 @@ public class Model extends Observable {
     public boolean removeItem(Account account){
         boolean success = accounts.remove(account);
         setChanged();
-        notifyObservers();
+        notifyObservers(this.accounts);
         return success;
     }
 
     public void addItem(Account account){
         accounts.add(account);
         setChanged();
-        notifyObservers();
+        notifyObservers(this.accounts);
 
     }
     public boolean changeItem(Account account, Account newAccount){
         boolean success1 = this.removeItem(account);
         this.addItem(newAccount);
         setChanged();
-        notifyObservers();
+        notifyObservers(this.accounts);
         return success1;
     }
 }
