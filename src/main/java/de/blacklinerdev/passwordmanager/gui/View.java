@@ -6,6 +6,7 @@ public class View extends javax.swing.JFrame {
     
     private JDialog dialog;
 
+
     public View() {
         initComponents();
         this.dialog = new checkPassword(this, true);

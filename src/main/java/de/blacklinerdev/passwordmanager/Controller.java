@@ -8,8 +8,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener, Observer {
 
     private Model model;
     private View view;
@@ -23,6 +25,7 @@ public class Controller implements ActionListener{
                 System.exit(0);
         }
         this.view = new View();
+        this.model.addObserver(this);
     }
 
     private Model load() throws IOException, ClassNotFoundException {
@@ -45,12 +48,16 @@ public class Controller implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+
     }
-    
-    public static void main(String[] args){
+
+     public static void main(String[] args){
         Controller controller = new Controller();
-        
+
     }
-    
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }
